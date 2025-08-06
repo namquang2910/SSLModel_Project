@@ -340,7 +340,9 @@ def plot_loss_curves(train_losses, val_losses):
     plt.grid()
     plt.show()
 
-record_ranges = [(100,109),(111, 119),(121,124),(200,203),(205,205),(207,210),(212,215),(217,217),(219,223),(228,228),(230,234)]
+
+
+record_ranges = [(100,109),(111, 119),(121,124),(200,203),(205,205),(207,210),(212,215),(217,217),(219,223),(228,228),(230,232)]
 #record_ranges = [(100, 101)]
 print("Loading the data")
 data = load_multiple_records(record_ranges)
@@ -351,4 +353,4 @@ print("Preparing data")
 train_loader, val_loader = prepare_data(data, seq_len=seq_len)
 mae_model = MAE1D(seq_len=seq_len)
 print("cuda")
-train_model_with_plot(mae_model, train_loader, val_loader, epochs=20, device='cuda')
+train_model_with_plot(mae_model, train_loader, val_loader, epochs=50, device='cuda')
