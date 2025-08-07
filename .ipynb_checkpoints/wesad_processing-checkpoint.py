@@ -67,7 +67,7 @@ def get_ecg_dataframe(data,sample_rate, segment_size, stride, is_train):
     label_ls = []
     pts_window = segment_size*100
     print("minmax")
-    encoder = MinMaxScaler(feature_range=(-0.5, 0.5))
+    encoder = StandardScaler()
     
     label = data['label']
     ecg_data = np.array(data["signal"]["chest"]["ECG"][:,0])
