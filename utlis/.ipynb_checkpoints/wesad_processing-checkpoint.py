@@ -45,7 +45,7 @@ def get_ecg_dataframe(data,sample_rate, segment_size, stride, is_train):
     ecg_data = np.array(data["signal"]["chest"]["ECG"][:,0])
     
     #Preprocessing the ECG data
-    band_passed_ecg =  nk.signal_filter(ecg_data, sampling_rate=sample_rate, lowcut=0.5, highcut=100, method='butterworth_zi', order = 2)
+    band_passed_ecg =  nk.signal_filter(ecg_data, sampling_rate=sample_rate, lowcut=0.1, highcut=100, method='butterworth_zi', order = 2)
     emg = moving_average(band_passed_ecg, window_size=10)
     ecg_val = nk.signal_resample(emg, sampling_rate=sample_rate, desired_sampling_rate=100)
     
